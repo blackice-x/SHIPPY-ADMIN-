@@ -35,17 +35,17 @@ const TeamMembers: React.FC = () => {
           id: '1',
           name: 'KEWIN',
           email: 'KEWINAD@6868',
-          phone: '',
+          phone: 'null',
           role: 'Owner',
-          joinDate: ''
+          joinDate: 'null'
         },
         {
           id: '2',
           name: 'BADSHA',
           email: 'BADSHAAD@6868',
-          phone: '',
+          phone: 'null',
           role: 'Owner',
-          joinDate: ''
+          joinDate: 'null'
         }
       ];
       setTeamMembers(initialMembers);
@@ -255,7 +255,7 @@ const TeamMembers: React.FC = () => {
                     ) : (
                       <div className="flex items-center">
                         <Phone className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-900">{member.phone}</span>
+                        <span className="text-sm text-gray-900">{member.phone === 'null' ? 'null' : member.phone}</span>
                       </div>
                     )}
                   </td>
@@ -286,11 +286,11 @@ const TeamMembers: React.FC = () => {
                       />
                     ) : (
                       <div className="text-sm text-gray-900">
-                        {member.joinDate ? new Date(member.joinDate).toLocaleDateString('en-US', {
+                        {member.joinDate && member.joinDate !== 'null' ? new Date(member.joinDate).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
                           year: 'numeric'
-                        }) : 'N/A'}
+                        }) : 'null'}
                       </div>
                     )}
                   </td>
