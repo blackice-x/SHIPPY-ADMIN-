@@ -21,13 +21,13 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
       const data = JSON.parse(savedSalary);
       return {
         totalEarnings: data.totalEarnings,
-        nextSalaryAmount: data.nextSalaryAmount,
+        nextSalaryAmount: 25000,
         nextSalaryDate: data.nextSalaryDate
       };
     }
     return {
       totalEarnings: 170000,
-      nextSalaryAmount: 3500,
+      nextSalaryAmount: 25000,
       nextSalaryDate: '2025-08-25'
     };
   };
@@ -37,7 +37,7 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
     if (savedTeam) {
       return JSON.parse(savedTeam).length;
     }
-    return 3; // fallback
+    return 2; // fallback for KEWIN and BADSHA
   };
 
   const salaryData = getSalaryData();
@@ -45,11 +45,17 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
   const teamCount = getTeamCount();
 
   // Calculate monthly growth (mock calculation)
-  const getMonthlyGrowth = () => {
+  const getMonthlyData = () => {
     const currentMonth = new Date().getMonth();
     const growthRates = [15.2, 18.7, 23.4, 19.8, 25.1, 21.3, 28.9, 23.4, 20.1, 26.7, 22.5, 24.8];
-    return growthRates[currentMonth] || 23.4;
+    const lossRates = [5.1, 3.2, 7.8, 4.5, 2.9, 6.1, 3.7, 5.4, 4.2, 3.8, 5.9, 4.6];
+    return {
+      growth: growthRates[currentMonth] || 23.4,
+      loss: lossRates[currentMonth] || 4.5
+    };
   };
+
+  const monthlyData = getMonthlyData();
 
   const stats = [
     {
@@ -72,7 +78,7 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
     },
     {
       title: 'Monthly Growth',
-      value: `+${getMonthlyGrowth()}%`,
+      value: `+${monthlyData.growth}%`,
       subtitle: 'This Month',
       icon: TrendingUp,
       color: 'bg-purple-500',
@@ -80,8 +86,17 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
       bgColor: 'bg-purple-50',
     },
     {
+      title: 'Monthly Loss',
+      value: `-${monthlyData.loss}%`,
+      subtitle: 'This Month',
+      icon: TrendingUp,
+      color: 'bg-red-500',
+      textColor: 'text-red-600',
+      bgColor: 'bg-red-50',
+    },
+    {
       title: 'Next Salary',
-      value: `₹${salaryData.nextSalaryAmount.toLocaleString()}`,
+      value: `₹25,000`,
       subtitle: new Date(salaryData.nextSalaryDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       icon: Calendar,
       color: 'bg-orange-500',
@@ -98,6 +113,7 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
@@ -125,10 +141,8 @@ const Overview: React.FC<OverviewProps> = ({ onNavigate }) => {
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Recent Activity</h3>
           <div className="space-y-4">
             {[
-              { action: 'Added new T-shirt stock', time: '2 hours ago', type: 'success' },
-              { action: 'Updated shoe prices', time: '4 hours ago', type: 'info' },
-              { action: 'Processed salary payment', time: '1 day ago', type: 'success' },
-              { action: 'Added new watch collection', time: '2 days ago', type: 'info' },
+              { action: 'System initialized', time: 'Just now', type: 'info' },
+              { action: 'Dashboard accessed', time: 'Just now', type: 'success' },
             ].map((activity, index) => (
               <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                 <div className={`h-3 w-3 rounded-full ${

@@ -23,7 +23,7 @@ const Salary: React.FC = () => {
   const [salaryData, setSalaryData] = useState<SalaryData>({
     currentSalary: 45000,
     nextSalaryDate: '2025-08-25',
-    nextSalaryAmount: 3500,
+    nextSalaryAmount: 25000,
     totalEarnings: 170000,
     lastUpdate: new Date().toISOString().split('T')[0]
   });
@@ -598,26 +598,9 @@ const Salary: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Salary History</h3>
-          <div className="space-y-4">
-            {[
-              { month: 'July 2025', amount: 3500, status: 'Paid', date: '2025-07-25' },
-              { month: 'June 2025', amount: 3500, status: 'Paid', date: '2025-06-25' },
-              { month: 'May 2025', amount: 3500, status: 'Paid', date: '2025-05-25' },
-              { month: 'April 2025', amount: 3500, status: 'Paid', date: '2025-04-25' },
-            ].map((record, index) => (
-              <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-medium text-gray-900">{record.month}</p>
-                  <p className="text-sm text-gray-500">Paid on {record.date}</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-semibold text-gray-900">₹{record.amount.toLocaleString()}</p>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    {record.status}
-                  </span>
-                </div>
-              </div>
-            ))}
+          <div className="text-center py-8">
+            <p className="text-gray-500">No salary history available</p>
+            <p className="text-sm text-gray-400 mt-2">History will appear here after payments are processed</p>
           </div>
         </div>
 
@@ -633,7 +616,7 @@ const Salary: React.FC = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-blue-700">Next Salary:</span>
-                  <span className="text-sm font-medium text-blue-900">₹{salaryData.nextSalaryAmount.toLocaleString()}</span>
+                  <span className="text-sm font-medium text-blue-900">₹25,000</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-blue-700">Next Date:</span>

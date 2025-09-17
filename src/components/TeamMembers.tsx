@@ -22,7 +22,7 @@ const TeamMembers: React.FC = () => {
     joinDate: new Date().toISOString().split('T')[0]
   });
 
-  const roles = ['Admin', 'Manager', 'Employee', 'Intern', 'Contractor'];
+  const roles = ['Owner', 'Admin', 'Manager', 'Employee', 'Intern', 'Contractor'];
 
   useEffect(() => {
     const savedMembers = localStorage.getItem('shippy_team_members');
@@ -33,27 +33,19 @@ const TeamMembers: React.FC = () => {
       const initialMembers: TeamMember[] = [
         {
           id: '1',
-          name: 'John Doe',
-          email: 'john.doe@shippy.com',
-          phone: '+91 9876543210',
-          role: 'Admin',
-          joinDate: '2024-01-15'
+          name: 'KEWIN',
+          email: 'KEWINAD@6868',
+          phone: '',
+          role: 'Owner',
+          joinDate: ''
         },
         {
           id: '2',
-          name: 'Jane Smith',
-          email: 'jane.smith@shippy.com',
-          phone: '+91 9876543211',
-          role: 'Manager',
-          joinDate: '2024-02-20'
-        },
-        {
-          id: '3',
-          name: 'Mike Johnson',
-          email: 'mike.johnson@shippy.com',
-          phone: '+91 9876543212',
-          role: 'Employee',
-          joinDate: '2024-03-10'
+          name: 'BADSHA',
+          email: 'BADSHAAD@6868',
+          phone: '',
+          role: 'Owner',
+          joinDate: ''
         }
       ];
       setTeamMembers(initialMembers);
@@ -93,6 +85,8 @@ const TeamMembers: React.FC = () => {
 
   const getRoleColor = (role: string) => {
     switch (role) {
+      case 'Owner':
+        return 'bg-gold-100 text-gold-800 bg-yellow-100 text-yellow-800';
       case 'Admin':
         return 'bg-red-100 text-red-800';
       case 'Manager':
@@ -292,11 +286,11 @@ const TeamMembers: React.FC = () => {
                       />
                     ) : (
                       <div className="text-sm text-gray-900">
-                        {new Date(member.joinDate).toLocaleDateString('en-US', {
+                        {member.joinDate ? new Date(member.joinDate).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
                           year: 'numeric'
-                        })}
+                        }) : 'N/A'}
                       </div>
                     )}
                   </td>
@@ -370,9 +364,9 @@ const TeamMembers: React.FC = () => {
             <User className="h-8 w-8" />
           </div>
           <div>
-            <p className="text-purple-100 text-sm mb-1">Employees</p>
-            <p className="text-2xl font-bold">{teamMembers.filter(m => m.role === 'Employee').length}</p>
-            <p className="text-purple-100 text-sm mt-1">Staff Members</p>
+            <p className="text-purple-100 text-sm mb-1">Owners</p>
+            <p className="text-2xl font-bold">{teamMembers.filter(m => m.role === 'Owner').length}</p>
+            <p className="text-purple-100 text-sm mt-1">Business Owners</p>
           </div>
         </div>
       </div>

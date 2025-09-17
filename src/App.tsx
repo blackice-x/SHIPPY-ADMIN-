@@ -6,20 +6,18 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const authStatus = localStorage.getItem('shippy_auth');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
+    // Always require login on page load/refresh
+    setIsAuthenticated(false);
+    localStorage.removeItem('shippy_auth');
   }, []);
 
   const handleLogin = () => {
     setIsAuthenticated(true);
-    localStorage.setItem('shippy_auth', 'true');
+    // Don't persist auth status so user has to login again on refresh
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('shippy_auth');
   };
 
   return (

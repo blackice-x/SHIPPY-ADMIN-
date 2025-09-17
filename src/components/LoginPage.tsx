@@ -12,7 +12,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === 'admin@gmail.com' && password === 'admin@123') {
+    if ((email === 'KEWINAD@6868' && password === 'SHIPPYAD@123') || 
+        (email === 'BADSHAAD@6868' && password === 'SHIPPYAD@123')) {
       onLogin();
     } else {
       setError('Invalid credentials. Please try again.');
@@ -45,7 +46,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="admin@gmail.com"
+                  placeholder="Enter admin username"
                   required
                 />
               </div>
@@ -85,7 +86,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           </form>
 
           <div className="text-center text-sm text-gray-500">
-            Demo Credentials: admin@gmail.com / admin@123
+            Demo Credentials: KEWINAD@6868 / SHIPPYAD@123 or BADSHAAD@6868 / SHIPPYAD@123
           </div>
         </div>
       </div>

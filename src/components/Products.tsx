@@ -18,13 +18,14 @@ const Products: React.FC = () => {
   const [newProduct, setNewProduct] = useState({
     name: '',
     category: 'T-Shirt',
+    category: 'Shoes',
     stock: 0,
     price: 0,
     gst: '18%',
     condition: 'New'
   });
 
-  const categories = ['T-Shirt', 'Pants', 'Shoes', 'Watches', 'Accessories', 'Electronics', 'Sports'];
+  const categories = ['Shoes', 'T-Shirts', 'Pants', 'Jeans', 'Kids Wear', 'Ladies Wear', 'Watches', 'Bags'];
   const gstOptions = ['0%', '5%', '12%', '18%', '28%'];
   const conditions = ['New', 'Good', 'Fair', 'Refurbished', 'Used'];
 
@@ -35,16 +36,14 @@ const Products: React.FC = () => {
     } else {
       // Initialize with sample data
       const initialProducts: Product[] = [
-        { id: '1', name: 'Cotton T-Shirt', category: 'T-Shirt', stock: 150, price: 599, gst: '18%', condition: 'New' },
-        { id: '2', name: 'Polo T-Shirt', category: 'T-Shirt', stock: 120, price: 799, gst: '18%', condition: 'New' },
-        { id: '3', name: 'Denim Jeans', category: 'Pants', stock: 80, price: 1299, gst: '18%', condition: 'New' },
-        { id: '4', name: 'Cargo Pants', category: 'Pants', stock: 60, price: 1599, gst: '18%', condition: 'New' },
-        { id: '5', name: 'Running Shoes', category: 'Shoes', stock: 45, price: 2499, gst: '18%', condition: 'New' },
-        { id: '6', name: 'Casual Sneakers', category: 'Shoes', stock: 35, price: 1899, gst: '18%', condition: 'New' },
-        { id: '7', name: 'Smart Watch', category: 'Watches', stock: 25, price: 4999, gst: '18%', condition: 'New' },
-        { id: '8', name: 'Analog Watch', category: 'Watches', stock: 40, price: 2299, gst: '18%', condition: 'New' },
-        { id: '9', name: 'Leather Belt', category: 'Accessories', stock: 70, price: 899, gst: '18%', condition: 'New' },
-        { id: '10', name: 'Sunglasses', category: 'Accessories', stock: 55, price: 1199, gst: '18%', condition: 'New' },
+        { id: '1', name: 'Running Shoes', category: 'Shoes', stock: 0, price: 2499, gst: '18%', condition: 'New' },
+        { id: '2', name: 'Cotton T-Shirt', category: 'T-Shirts', stock: 0, price: 599, gst: '18%', condition: 'New' },
+        { id: '3', name: 'Casual Pants', category: 'Pants', stock: 0, price: 1299, gst: '18%', condition: 'New' },
+        { id: '4', name: 'Denim Jeans', category: 'Jeans', stock: 0, price: 1599, gst: '18%', condition: 'New' },
+        { id: '5', name: 'Kids T-Shirt', category: 'Kids Wear', stock: 0, price: 399, gst: '18%', condition: 'New' },
+        { id: '6', name: 'Ladies Dress', category: 'Ladies Wear', stock: 0, price: 1899, gst: '18%', condition: 'New' },
+        { id: '7', name: 'Smart Watch', category: 'Watches', stock: 0, price: 4999, gst: '18%', condition: 'New' },
+        { id: '8', name: 'Leather Bag', category: 'Bags', stock: 0, price: 2299, gst: '18%', condition: 'New' },
       ];
       setProducts(initialProducts);
       localStorage.setItem('shippy_products', JSON.stringify(initialProducts));
