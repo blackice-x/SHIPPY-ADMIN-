@@ -85,9 +85,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </button>
           </form>
 
-          <div className="text-center text-sm text-gray-500">
-            Demo Credentials: KEWINAD@6868 / SHIPPYAD@123 or BADSHAAD@6868 / SHIPPYAD@123
-          </div>
         </div>
       </div>
     </div>
